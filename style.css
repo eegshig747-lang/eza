@@ -1,0 +1,633 @@
+
+:root {
+  --cocoa: #402821;
+  --caramel: #926e57;
+  --cream: #f2f1ee;
+  --butter: #f1e6ad;
+  --gold: #b18a56;
+  --paper: #e9d8c1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #160e0b;
+  color: var(--cream);
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+/* MAIN */
+
+.app {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  min-height: 100dvh;
+  margin: auto;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse at 50% 25%,
+      #624532,
+      transparent 70%
+    ),
+    linear-gradient(145deg, #402821, #20130f);
+  box-shadow: 0 0 70px #0009;
+}
+
+/* PAGES */
+
+.page {
+  display: none;
+  position: relative;
+  min-height: 100dvh;
+  padding: 35px 22px;
+  overflow: hidden;
+  animation: pageIn 0.7s ease both;
+}
+
+.page.active {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  flex: 1;
+  text-align: center;
+}
+
+@keyframes pageIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* BIRTHDAY TITLE */
+
+.heading {
+  text-align: center;
+  margin: 15px auto 30px;
+  animation: headingIn 1.2s ease both;
+}
+
+.small-title {
+  display: block;
+  font-size: 18px;
+  letter-spacing: 7px;
+  color: var(--butter);
+}
+
+.heading h1 {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(65px, 17vw, 90px);
+  font-weight: normal;
+  line-height: 1;
+  margin: 10px 0;
+  color: var(--cream);
+}
+
+@keyframes headingIn {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* PHOTO BOOTH */
+
+.machine {
+  position: relative;
+  width: min(100%, 330px);
+  height: 400px;
+  margin: 10px auto 30px;
+  flex-shrink: 0;
+  border: 9px ridge #86603e;
+  border-radius: 18px;
+  background:
+    linear-gradient(
+      115deg,
+      #24150f 0%,
+      #745037 24%,
+      #352219 55%,
+      #86603e 100%
+    );
+  box-shadow:
+    inset 0 0 35px #000c,
+    0 20px 35px #0009,
+    0 0 0 3px #21140e;
+}
+
+.machine::before {
+  content: "";
+  position: absolute;
+  inset: 13px;
+  border: 1px solid #b58b58;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.machine-detail {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  top: 30px;
+  height: 2px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #b58b58,
+      transparent
+    );
+}
+
+.machine-slot {
+  position: absolute;
+  top: 83px;
+  left: 23px;
+  width: 205px;
+  height: 265px;
+  background: #100c0a;
+  border: 14px ridge #8d6542;
+  border-radius: 12px;
+  box-shadow: inset 0 15px 30px #000;
+  overflow: hidden;
+}
+
+.machine-slot::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 18px;
+  background:
+    linear-gradient(#1b100b, #765031, #21140d);
+}
+
+.photo-paper {
+  position: absolute;
+  top: 0;
+  left: 11px;
+  width: 155px;
+  height: 235px;
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eee3d3;
+  border: 2px solid #a48a6d;
+  box-shadow: 0 5px 15px #0006;
+  transform: translateY(-110%);
+}
+
+.printed-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #eee3d3;
+}
+
+.photo-paper.printed {
+  animation:
+    printing 3s cubic-bezier(0.3, 0.1, 0.3, 1)
+    forwards;
+}
+
+@keyframes printing {
+  0% {
+    transform: translateY(-110%);
+  }
+  20% {
+    transform: translateY(-85%);
+  }
+  45% {
+    transform: translateY(-55%);
+  }
+  70% {
+    transform: translateY(-25%);
+  }
+  100% {
+    transform: translateY(12%);
+  }
+}
+
+/* MACHINE BUTTON */
+
+.machine-controls {
+  position: absolute;
+  top: 125px;
+  right: 17px;
+  width: 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.metal-button {
+  width: 49px;
+  height: 49px;
+  border-radius: 50%;
+  border: 5px ridge #c9a46d;
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #e0bd81,
+      #7a542f 65%,
+      #2b190e
+    );
+  box-shadow: 0 5px 10px #0009;
+}
+
+.metal-button:active {
+  transform: scale(0.9);
+}
+
+.machine-controls > span {
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #e1bd85;
+}
+
+.machine-label {
+  margin-top: 18px;
+  padding: 12px 5px;
+  width: 72px;
+  border: 1px solid #b58b58;
+  color: #e1bd85;
+  font-size: 17px;
+  line-height: 1.1;
+}
+
+/* BUTTONS */
+
+.main-button {
+  width: min(100%, 290px);
+  min-height: 53px;
+  margin: auto auto 10px;
+  border-radius: 30px;
+  border: 2px solid #b99569;
+  background:
+    linear-gradient(#f3e6d3, #dbc4a6);
+  color: var(--cocoa);
+  letter-spacing: 3px;
+  font-size: 17px;
+  font-weight: 600;
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s;
+}
+
+.main-button:not(:disabled):hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px #0008;
+}
+
+.back-button {
+  border: none;
+  background: transparent;
+  color: var(--cream);
+  letter-spacing: 2px;
+  font-size: 15px;
+  padding: 13px;
+  margin: 4px auto 0;
+}
+
+.back-button:hover {
+  color: var(--butter);
+}
+
+/* TITLES */
+
+.script-title {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(48px, 13vw, 67px);
+  font-weight: normal;
+  margin: 25px 0 35px;
+  line-height: 1.1;
+}
+
+.mongolian-title {
+  font-family: Georgia, serif;
+  font-size: 29px;
+  font-weight: normal;
+  margin: 30px 0 40px;
+}
+
+/* DATE CARDS */
+
+.date-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px;
+  margin-bottom: 30px;
+}
+
+.date-card,
+.show-card {
+  min-width: 0;
+  padding: 8px 8px 14px;
+  border: 3px solid #d8c6ac;
+  background: #e8d9c4;
+  color: var(--cocoa);
+  box-shadow: 4px 8px 16px #0006;
+  transition:
+    transform 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.date-card:nth-child(odd) {
+  transform: rotate(-2deg);
+}
+
+.date-card:nth-child(even) {
+  transform: rotate(2deg);
+}
+
+.date-card img,
+.show-card img {
+  display: block;
+  width: 100%;
+  height: 155px;
+  object-fit: cover;
+  background: #a38a73;
+}
+
+.date-card span,
+.show-card span {
+  display: block;
+  margin-top: 12px;
+  font-size: 21px;
+  line-height: 1.15;
+}
+
+.show-card span {
+  font-family: Georgia, serif;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.show-card small {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+.comedy-grid .show-card img {
+  height: 220px;
+  object-fit: contain;
+  background: #f0e4d4;
+}
+
+.date-card.selected,
+.show-card.selected {
+  border-color: #c99a48;
+  outline: 3px solid var(--butter);
+  transform: rotate(0) translateY(-7px);
+  box-shadow: 0 12px 25px #0009;
+}
+
+/* CALENDAR */
+
+.calendar-box {
+  width: 100%;
+  margin-top: 10px;
+  padding: 23px 14px;
+  color: var(--cocoa);
+  background:
+    linear-gradient(130deg, #f2e6d1, #d8c2a4);
+  border: 1px solid #b99a72;
+  box-shadow: 0 15px 30px #0007;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+
+.calendar-header button {
+  border: none;
+  background: transparent;
+  color: var(--cocoa);
+  font-size: 32px;
+  padding: 0 10px;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.weekday {
+  font-size: 12px;
+  font-weight: bold;
+  padding: 8px 0;
+}
+
+.day {
+  width: 100%;
+  aspect-ratio: 1;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--cocoa);
+  font-size: 17px;
+}
+
+.day:not(:disabled):hover {
+  background: #bfa88d;
+}
+
+.day:disabled {
+  opacity: 0.22;
+}
+
+.day.selected {
+  background: var(--cocoa);
+  color: var(--cream);
+}
+
+#doneButton {
+  margin-top: 35px;
+}
+
+/* CONFIRMATION */
+
+.confirmation {
+  width: 100%;
+  margin-top: 30px;
+  padding: 35px 20px;
+  background: #e8d8c0;
+  color: var(--cocoa);
+  border: 2px solid #b99a72;
+  box-shadow: 0 15px 30px #0007;
+  animation: pageIn 0.7s ease;
+}
+
+.confirmation-flower {
+  font-size: 45px;
+  color: var(--caramel);
+}
+
+.confirmation h2 {
+  font-family: "Great Vibes", cursive;
+  font-size: 60px;
+  font-weight: normal;
+  margin: 0 0 20px;
+}
+
+.confirmation p {
+  font-size: 21px;
+  white-space: pre-line;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.confirmation .main-button {
+  margin-top: 20px;
+}
+
+.dark-back {
+  display: block;
+  color: var(--cocoa);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* DECORATIONS */
+
+.decorations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  overflow: hidden;
+}
+
+.decor {
+  position: absolute;
+  pointer-events: none;
+}
+
+.lace {
+  width: 230px;
+  left: -80px;
+  bottom: -55px;
+  opacity: 0.85;
+  transform: rotate(-15deg);
+}
+
+.flowers {
+  width: 140px;
+  right: -35px;
+  top: 140px;
+  opacity: 0.9;
+  transform: rotate(12deg);
+}
+
+.bow {
+  width: 105px;
+  right: 5px;
+  bottom: 85px;
+  transform: rotate(-15deg);
+  filter: drop-shadow(0 5px 7px #0005);
+}
+
+/* PAPER TEXTURE */
+
+.date-card,
+.show-card,
+.calendar-box {
+  background-image:
+    linear-gradient(#f2e6d1cc, #d8c2a4dd),
+    url("images/decorations/paper.png");
+  background-size: cover;
+  background-position: center;
+}
+
+/* MOBILE */
+
+@media (max-width: 370px) {
+  .page {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .date-grid {
+    gap: 10px;
+  }
+
+  .date-card img {
+    height: 125px;
+  }
+
+  .machine {
+    transform: scale(0.9);
+    margin: -10px auto 0;
+  }
+
+  .comedy-grid .show-card img {
+    height: 170px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page {
+    animation: none;
+  }
+
+  .date-card,
+  .show-card,
+  .main-button {
+    transition: none;
+  }
+}

@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#402821">
+  <title>Happy Birthday | Date Invitation</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect"
+        href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <main class="app">
+
+    <!-- PAGE 1: PHOTO BOOTH -->
+    <section id="home" class="page active">
+      <div class="page-content">
+
+        <div class="heading">
+          <span class="small-title">HAPPY</span>
+          <h1>Birthday!</h1>
+        </div>
+
+        <div class="machine">
+          <div class="machine-detail"></div>
+
+          <div class="machine-slot">
+            <div id="photoPaper" class="photo-paper">
+              <img
+                src="images/birthday.jpg"
+                alt="Birthday photo"
+                class="printed-photo">
+            </div>
+          </div>
+
+          <div class="machine-controls">
+            <button
+              id="printButton"
+              class="metal-button"
+              aria-label="Print birthday photo">
+            </button>
+            <span>PRESS</span>
+
+            <div class="machine-label">
+              PHOTO<br>BOOTH
+            </div>
+          </div>
+        </div>
+
+        <button id="openButton"
+                class="main-button" disabled>
+          OPEN →
+        </button>
+      </div>
+
+      <div class="decorations">
+        <img src="images/decorations/lace.png"
+             class="decor lace" alt="">
+        <img src="images/decorations/flowers.png"
+             class="decor flowers" alt="">
+        <img src="images/decorations/bow.png"
+             class="decor bow" alt="">
+      </div>
+    </section>
+
+    <!-- PAGE 2: DATE IDEAS -->
+    <section id="dates" class="page">
+      <div class="page-content">
+
+        <h1 class="script-title">Choose a Date</h1>
+
+        <div class="date-grid">
+
+          <button class="date-card"
+                  data-date="Ceramic Date">
+            <img src="images/ceramic.jpg"
+                 alt="Ceramic Date">
+            <span>Ceramic Date</span>
+          </button>
+
+          <button class="date-card"
+                  data-date="Хошин шог үзэх">
+            <img src="images/comedy.png"
+                 alt="Хошин шог үзэх">
+            <span>Хошин шог үзэх</span>
+          </button>
+
+          <button class="date-card"
+                  data-date="Canvas Art">
+            <img src="images/canvas.jpg"
+                 alt="Canvas Art">
+            <span>Canvas Art</span>
+          </button>
+
+          <button class="date-card"
+                  data-date="Чулуун бугуйвч урлах">
+            <img src="images/bracelet.jpg"
+                 alt="Чулуун бугуйвч урлах">
+            <span>Чулуун бугуйвч урлах</span>
+          </button>
+
+          <button class="date-card"
+                  data-date="Wine & Candle Art">
+            <img src="images/wine-candle.jpg"
+                 alt="Wine & Candle Art">
+            <span>Wine & Candle Art</span>
+          </button>
+
+          <button class="date-card"
+                  data-date="Cake Painting Date">
+            <img src="images/cake-day.jpg"
+                 alt="Cake Painting Date">
+            <span>Cake Painting Date</span>
+          </button>
+
+        </div>
+
+        <button id="dateNext"
+                class="main-button" disabled>
+          CONTINUE →
+        </button>
+
+        <button id="datesBack"
+                class="back-button">
+          ← BACK
+        </button>
+      </div>
+
+      <div class="decorations">
+        <img src="images/decorations/lace.png"
+             class="decor lace" alt="">
+        <img src="images/decorations/flowers.png"
+             class="decor flowers" alt="">
+        <img src="images/decorations/bow.png"
+             class="decor bow" alt="">
+      </div>
+    </section>
+
+    <!-- COMEDY SHOW SELECTION -->
+    <section id="comedy" class="page">
+      <div class="page-content">
+
+        <h1 class="mongolian-title">
+          Хошин шог үзэх
+        </h1>
+
+        <div class="date-grid comedy-grid">
+
+          <button class="show-card"
+                  data-show="Бүгд инээх дуртай">
+            <img src="images/comedy1.png"
+                 alt="Бүгд инээх дуртай">
+            <span>Бүгд инээх дуртай</span>
+            <small>Соёлын төв өргөө</small>
+          </button>
+
+          <button class="show-card"
+                  data-show="Хайр түгээе">
+            <img src="images/comedy2.png"
+                 alt="Хайр түгээе">
+            <span>Хайр түгээе</span>
+            <small>МҮЭСТО</small>
+          </button>
+
+        </div>
+
+        <button id="comedyNext"
+                class="main-button" disabled>
+          CONTINUE →
+        </button>
+
+        <button id="comedyBack"
+                class="back-button">
+          ← BACK
+        </button>
+      </div>
+
+      <div class="decorations">
+        <img src="images/decorations/lace.png"
+             class="decor lace" alt="">
+        <img src="images/decorations/flowers.png"
+             class="decor flowers" alt="">
+        <img src="images/decorations/bow.png"
+             class="decor bow" alt="">
+      </div>
+    </section>
+
+    <!-- PAGE 3: CALENDAR -->
+    <section id="calendarPage" class="page">
+      <div class="page-content">
+
+        <h1 class="script-title">Choose a Day</h1>
+
+        <div id="calendarBox" class="calendar-box">
+
+          <div class="calendar-header">
+            <button id="prevMonth"
+                    aria-label="Previous month">
+              ‹
+            </button>
+            <span id="monthTitle"></span>
+            <button id="nextMonth"
+                    aria-label="Next month">
+              ›
+            </button>
+          </div>
+
+          <div id="calendarDays"
+               class="calendar-days"></div>
+        </div>
+
+        <button id="doneButton"
+                class="main-button" disabled>
+          DONE ♡
+        </button>
+
+        <button id="calendarBack"
+                class="back-button">
+          ← BACK
+        </button>
+
+        <!-- CONFIRMATION -->
+        <div id="confirmation"
+             class="confirmation hidden">
+
+          <div class="confirmation-flower">❦</div>
+          <h2>Done ♡</h2>
+
+          <p id="resultText"></p>
+
+          <button id="shareButton"
+                  class="main-button">
+            SHARE ↗
+          </button>
+
+          <button id="resultBack"
+                  class="back-button dark-back">
+            ← BACK
+          </button>
+        </div>
+      </div>
+
+      <div class="decorations">
+        <img src="images/decorations/lace.png"
+             class="decor lace" alt="">
+        <img src="images/decorations/flowers.png"
+             class="decor flowers" alt="">
+        <img src="images/decorations/bow.png"
+             class="decor bow" alt="">
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
